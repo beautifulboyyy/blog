@@ -1,0 +1,246 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>密码学攻击方式 | 天工密码</title><meta name="author" content="lsw"><meta name="copyright" content="lsw"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="密码学攻击方式密码学是一门研究如何保护信息安全的学科，其中包括了许多不同的加密算法和协议。然而，不论多么安全的加密方法都可能会受到攻击，因此了解不同的攻击方式对于保护信息安全至关重要。 在密码学中，攻击方式可以分为两类：袭击和破译。袭击是指攻击者试图通过不同的手段来获取加密信息，而破译则是指攻击者试图通过分析加密算法本身来破解加密信息。 下面我们来看一下常见的攻击方式： 字典攻击  字典攻击是指攻">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学攻击方式">
+<meta property="og:url" content="https://www.tiangongcrypto.site/2023/03/20/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F/index.html">
+<meta property="og:site_name" content="天工密码">
+<meta property="og:description" content="密码学攻击方式密码学是一门研究如何保护信息安全的学科，其中包括了许多不同的加密算法和协议。然而，不论多么安全的加密方法都可能会受到攻击，因此了解不同的攻击方式对于保护信息安全至关重要。 在密码学中，攻击方式可以分为两类：袭击和破译。袭击是指攻击者试图通过不同的手段来获取加密信息，而破译则是指攻击者试图通过分析加密算法本身来破解加密信息。 下面我们来看一下常见的攻击方式： 字典攻击  字典攻击是指攻">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s1.vika.cn/space/2023/03/01/c6512906aad74399b0ef98d0d9c78c5d">
+<meta property="article:published_time" content="2023-03-20T10:35:42.000Z">
+<meta property="article:modified_time" content="2023-03-20T10:37:56.223Z">
+<meta property="article:author" content="lsw">
+<meta property="article:tag" content="article">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s1.vika.cn/space/2023/03/01/c6512906aad74399b0ef98d0d9c78c5d"><link rel="shortcut icon" href="https://s1.vika.cn/space/2023/03/01/db134c4b2e7346efa9edb859d1cf4657"><link rel="canonical" href="https://www.tiangongcrypto.site/2023/03/20/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '密码学攻击方式',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-03-20 18:37:56'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s1.vika.cn/space/2023/03/01/c6512906aad74399b0ef98d0d9c78c5d" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">13</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="天工密码"><img class="site-icon" src="https://s1.vika.cn/space/2023/03/01/db134c4b2e7346efa9edb859d1cf4657"/><span class="site-name">天工密码</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">密码学攻击方式</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-03-20T10:35:42.000Z" title="发表于 2023-03-20 18:35:42">2023-03-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-03-20T10:37:56.223Z" title="更新于 2023-03-20 18:37:56">2023-03-20</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="密码学攻击方式"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout hide-aside" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="密码学攻击方式"><a href="#密码学攻击方式" class="headerlink" title="密码学攻击方式"></a>密码学攻击方式</h2><p>密码学是一门研究如何保护信息安全的学科，其中包括了许多不同的加密算法和协议。然而，不论多么安全的加密方法都可能会受到攻击，因此了解不同的攻击方式对于保护信息安全至关重要。</p>
+<p>在密码学中，攻击方式可以分为两类：袭击和破译。袭击是指攻击者试图通过不同的手段来获取加密信息，而破译则是指攻击者试图通过分析加密算法本身来破解加密信息。</p>
+<p>下面我们来看一下常见的攻击方式：</p>
+<h3 id="字典攻击"><a href="#字典攻击" class="headerlink" title="字典攻击"></a>字典攻击</h3><img src="https://s1.vika.cn/space/2023/03/20/ff486363945242a18df4575f4cf7faf7" alt="窃听" style="max-width:60%;" />
+
+<p>字典攻击是指攻击者使用一个包含常见密码和词汇的列表，尝试使用这些密码和词汇来破解密码。这种攻击方式非常常见，因为大多数人使用的密码都是基于常见词汇或数字组合的。</p>
+<p>基本原理：</p>
+<p>字典攻击的基本原理是利用密码学中的暴力破解技术，通过尝试大量的可能性来破解密码。攻击者会使用一个包含常见密码和词汇的列表，尝试每个可能的密码组合，直到找到正确的密码。这个列表通常称为“字典”，因此这种攻击方式被称为“字典攻击”。</p>
+<p>优缺点：</p>
+<p>字典攻击的优点是简单易行，只需要使用一个包含常见密码和词汇的列表就能够尝试破解密码。另外，由于大多数人使用的密码都是基于常见词汇或数字组合的，因此这种攻击方式往往能够取得不错的效果。</p>
+<p>缺点则是需要耗费大量的时间和计算资源，尤其是对于较长和复杂的密码，需要进行的尝试次数将会非常多，因此破解密码的成功率也会相应较低。</p>
+<p>常见例子：</p>
+<p>字典攻击是一种非常常见的攻击方式，常见的例子包括：</p>
+<ol>
+<li>破解电子邮件、社交媒体、银行等账户密码。</li>
+<li>破解Wi-Fi密码以便进行网络入侵。</li>
+<li>破解加密文件或压缩包的密码。</li>
+</ol>
+<p>应对方式：</p>
+<p>为了防止字典攻击，我们可以采取以下措施：</p>
+<ol>
+<li>使用复杂的密码，包括大小写字母、数字和特殊字符的组合。</li>
+<li>避免使用常见的密码或词汇，例如“123456”、“password”等。</li>
+<li>设置密码长度要足够长，最好不少于8位。</li>
+<li>定期更换密码，避免使用同一个密码在多个账户中。</li>
+<li>启用双重身份验证和其他安全措施，例如指纹识别、面部识别等。</li>
+<li>使用密码管理器来生成和存储复杂的密码。</li>
+<li>对于网络管理员来说，可以限制登录尝试次数，设置访问控制列表等措施来防范字典攻击。</li>
+</ol>
+<h3 id="暴力攻击"><a href="#暴力攻击" class="headerlink" title="暴力攻击"></a>暴力攻击</h3><img src="https://s1.vika.cn/space/2023/03/20/04c16889731e4229ac039f877faf715e" alt="窃听" style="max-width:60%;" />
+
+<p>暴力攻击是指攻击者通过尝试所有可能的密码组合来破解密码。这种攻击方式需要大量的计算能力和时间，但是如果密码过于简单，那么暴力攻击仍然是一种有效的攻击方式。</p>
+<p>基本原理：</p>
+<p>暴力攻击的基本原理是通过尝试所有可能的密码组合来猜测正确的密码。攻击者可以使用计算机程序自动化地生成所有可能的密码组合，并尝试每个密码组合来验证其是否正确。攻击者通常会使用一些常见的密码字典或者密码生成规则来生成密码组合，以增加破解成功的几率。</p>
+<p>优缺点：</p>
+<p>暴力攻击的优点是攻击者可以尝试所有可能的密码组合，从而破解密码的成功率较高。但是，暴力攻击需要大量的计算能力和时间，尤其是当密码长度较长时，攻击者需要耗费更多的时间和资源来破解密码。此外，暴力攻击的攻击方式比较单一，容易被检测和防御。</p>
+<p>常见例子：</p>
+<p>常见的暴力攻击例子包括破解电子邮件、社交媒体、银行账户等的密码。攻击者通过尝试所有可能的密码组合来破解密码，以获取用户的敏感信息或者控制用户的账户。另外，暴力攻击还可以用于破解加密的文件和数据，从而获取机密信息。</p>
+<p>应对方式：</p>
+<p>为了防止暴力攻击，用户可以采取以下措施：</p>
+<p>1.使用强密码：使用足够长、复杂的密码可以大大降低暴力攻击的成功率。</p>
+<p>2.多因素认证：使用多种认证因素，如密码、指纹、短信验证码等，可以增加破解密码的难度。</p>
+<p>3.限制登录尝试次数：限制用户登录尝试次数，当尝试次数超过一定限制时，锁定账户或者需要进行其他验证方式。</p>
+<p>4.使用防暴力攻击软件：使用一些防暴力攻击软件，如Fail2ban、DenyHosts等，可以监控和阻止暴力攻击行为。</p>
+<p>5.使用加密技术：使用加密技术来保护数据和文件，可以大大降低暴力攻击的成功率。</p>
+<h3 id="重放攻击"><a href="#重放攻击" class="headerlink" title="重放攻击"></a>重放攻击</h3><img src="https://s1.vika.cn/space/2023/03/20/cc64a4b32d9d4fd7b8567701de6e553f" alt="窃听" style="max-width:60%;" />
+
+<p>重放攻击是指攻击者截取加密数据并在稍后的时间内重新发送它们，以此来窃取信息或者伪造身份。这种攻击方式可以通过使用时间戳或其他技术来防止。</p>
+<p>重放攻击的基本原理是攻击者截获原始通信数据并保存下来，在稍后的时间内重新发送它们。由于这些数据可能包含敏感信息或者用于验证身份的凭证，攻击者可以利用这些数据来窃取信息或者伪造身份。</p>
+<p>与其他攻击方式相比，重放攻击具有以下优缺点：</p>
+<p>优点：</p>
+<p>攻击简单易行，不需要太多专业知识和技能；</p>
+<p>攻击成功率高，因为攻击者可以在不被发现的情况下多次尝试重放攻击。</p>
+<p>缺点：</p>
+<p>重放攻击需要截获原始通信数据，因此攻击者需要有足够的网络访问权限才能进行攻击；</p>
+<p>重放攻击只能重复播放已经发送过的数据，无法对新的数据产生影响；</p>
+<p>重放攻击容易被检测到，因为它会导致数据重复出现，而且在一些情况下，其效果并不显著。</p>
+<p>常见的重放攻击例子包括：</p>
+<p>网络认证协议攻击：攻击者截获用户的认证请求，并再次发送它们，从而欺骗服务器认为用户已经通过了认证。</p>
+<p>银行卡交易攻击：攻击者截获银行卡的交易数据并保存下来，在稍后的时间内重新发送它们。这种攻击旨在窃取交易金额，或者伪造交易记录。</p>
+<p>防御重放攻击的方法包括：</p>
+<p>时间戳：将时间戳添加到每个消息中，在服务器端对收到的消息进行时间戳验证。</p>
+<p>唯一性标识符：为每个消息分配唯一的标识符，并在服务器端对收到的消息进行标识符验证。</p>
+<p>加密和数字签名：使用加密算法对消息进行加密，并在发送方对消息进行数字签名，在接收方对消息进行验证，以确保消息的完整性和真实性。</p>
+<p>消息序列号: 在发送方依次对每条消息进行编号，并在接收方对消息进行验证，以确保消息的顺序和唯一性。</p>
+<p>总之，重放攻击是一种常见的网络攻击方式，但可以通过时间戳、唯一性标识符、加密和数字签名等方法来预防和防范。</p>
+<h3 id="中间人攻击"><a href="#中间人攻击" class="headerlink" title="中间人攻击"></a>中间人攻击</h3><img src="https://s1.vika.cn/space/2023/03/18/09f3d9b57c2d4e57947914234273d360" alt="窃听" style="max-width:60%;" />
+
+<p>中间人攻击是指攻击者在通信过程中插入自己的设备或程序，以此来窃取信息或者篡改信息。这种攻击方式可以通过使用加密通信协议来防止。</p>
+<p>中间人攻击是指攻击者在通信过程中插入自己的设备或程序，以此来窃取信息或者篡改信息。这种攻击方式可以通过使用加密通信协议来防止。</p>
+<p>基本原理：</p>
+<p>中间人攻击的基本原理是攻击者在通信过程中劫持数据包，将自己伪装成通信双方的一方，然后对数据进行窃取、篡改、重发等操作。攻击者可以通过各种手段劫持数据包，例如在网络中间节点上放置假的路由器或网关，或者通过Wi-Fi中的ARP欺骗等方式欺骗通信双方。</p>
+<p>优缺点：</p>
+<p>中间人攻击的优点是攻击者可以轻易地窃取信息或者篡改信息而不被察觉，而且攻击者可以选择性地处理数据包，可以任意操控通信双方之间的信息传输。其缺点是需要攻击者在实施攻击时具有一定的技术水平，攻击难度较大，而且一旦被识别出来，则攻击者的身份很容易被暴露。</p>
+<p>常见例子：</p>
+<p>中间人攻击的常见例子包括：恶意WiFi接入点攻击、ARP欺骗、DNS欺骗等。攻击者可以伪装成合法的Wi-Fi接入点，使用户在连接时输入敏感信息；攻击者也可以通过ARP欺骗攻击方式窃取数据包或者篡改数据包内容；攻击者还可以利用DNS欺骗方式将用户提交的域名解析到攻击者控制的服务器上，进而窃取用户的敏感信息。</p>
+<p>应对方式：</p>
+<p>为了避免中间人攻击，可以采用如下的应对方式：</p>
+<ol>
+<li>使用HTTPS加密通信协议</li>
+<li>确保网络安全，防止ARP欺骗等攻击</li>
+<li>尽量减少使用公共WiFi网络</li>
+<li>避免点击未知来源的链接</li>
+<li>定期更新系统和软件的补丁</li>
+</ol>
+<p>在密码学中，攻击方式是不断变化的，因此保持警惕并采取适当的安全措施非常重要。这包括使用强密码、使用加密通信协议、定期更改密码等。只有这样，我们才能确保我们的信息安全。</p>
+<p>参考资料：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.securemymind.com/tag/%E5%AD%97%E5%85%B8%E6%94%BB%E5%87%BB">https://blog.securemymind.com/tag/%E5%AD%97%E5%85%B8%E6%94%BB%E5%87%BB</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.mzh.ren/how-long-does-it-take-to-brute-force-an-8-char-password.html">https://www.mzh.ren/how-long-does-it-take-to-brute-force-an-8-char-password.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB">https://zh.wikipedia.org/wiki/%E9%87%8D%E6%94%BE%E6%94%BB%E5%87%BB</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/62025258">https://zhuanlan.zhihu.com/p/62025258</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://www.tiangongcrypto.site">lsw</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.tiangongcrypto.site/2023/03/20/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F/">https://www.tiangongcrypto.site/2023/03/20/%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.tiangongcrypto.site" target="_blank">天工密码</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/article/">article</a></div><div class="post_share"><div class="social-share" data-image="https://s1.vika.cn/space/2023/03/01/c6512906aad74399b0ef98d0d9c78c5d" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/03/20/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E5%8F%91%E5%B1%95%E5%8F%B2/" title="密码学的发展史"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">密码学的发展史</div></div></a></div><div class="next-post pull-right"><a href="/2023/03/20/%E7%8E%B0%E4%BB%A3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" title="现代加密算法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">现代加密算法</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/03/01/%E5%87%AF%E6%92%92%E5%AF%86%E7%A0%81/" title="凯撒密码"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-01</div><div class="title">凯撒密码</div></div></a></div><div><a href="/2023/03/18/%E4%BF%A1%E6%81%AF%E4%BC%A0%E8%BE%93%E4%B8%AD%E7%9A%84%E5%AE%89%E5%85%A8%E9%9A%90%E6%82%A3/" title="信息传输中的安全隐患"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-18</div><div class="title">信息传输中的安全隐患</div></div></a></div><div><a href="/2023/03/20/%E5%8F%A4%E5%85%B8%E5%AF%86%E7%A0%81%E4%BD%93%E5%88%B6/" title="古典密码体制"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-20</div><div class="title">古典密码体制</div></div></a></div><div><a href="/2023/03/20/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%9A%84%E5%8F%91%E5%B1%95%E5%8F%B2/" title="密码学的发展史"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-20</div><div class="title">密码学的发展史</div></div></a></div><div><a href="/2023/03/20/%E7%8E%B0%E4%BB%A3%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95/" title="现代加密算法"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-03-20</div><div class="title">现代加密算法</div></div></a></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By lsw</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
