@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>栅栏密码游戏</title>
+	<style>
+		body {
+			background-image: url('https://s1.vika.cn/space/2023/03/01/d0a68cef868041e6850a94fff5e75b44');
+			background-size: cover;
+			font-family: Arial, sans-serif;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			text-align: center;
+		}
+
+		h1 {
+			color: white;
+			font-size: 48px;
+			margin-bottom: 20px;
+		}
+
+		input {
+			padding: 10px;
+			font-size: 18px;
+			width: 300px;
+			margin-bottom: 20px;
+		}
+
+		button {
+			background-color: rgb(0, 191, 255);
+			color: white;
+			padding: 10px 20px;
+			font-size: 18px;
+			cursor: pointer;
+			border: none;
+		}
+
+		.result {
+			display: none;
+			color: white;
+			font-size: 24px;
+			margin-top: 20px;
+			border: 2px solid white;
+			padding: 10px;
+			background-color: rgba(255, 255, 255, 0.2);
+		}
+
+		.instructions {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			color: white;
+			font-size: 14px;
+			text-align: left;
+		}
+
+		#link {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			background-color: white;
+			color: black;
+			padding: 10px 20px;
+			font-size: 18px;
+			cursor: pointer;
+			border: none;
+			border-radius: 5px;
+			text-decoration: none;
+		}
+
+		.button-container {
+			display: flex;
+			justify-content: space-around;
+			width: 300px;
+			margin-top: 20px;
+		}
+	</style>
+</head>
+
+<body>
+	<a href="/" target="_self" id="link">返回</a>
+
+	<div class="container">
+		<h1>栅栏密码游戏</h1>
+		<input type="text" id="inputText" placeholder="输入明文或密文">
+		<input type="number" id="shift" placeholder="栅栏数量">
+		<div class="button-container">
+			<button onclick="railFenceEncrypt()">加密</button>
+			<button onclick="railFenceDecrypt()">解密</button>
+		</div>
+		<div class="result" id="result"></div>
+		<div class="instructions">
+			<p>游戏玩法：</p>
+			<p>1. 输入明文或密文。</p>
+			<p>2. 输入栅栏数量。</p>
+			<p>3. 点击加密/解密按钮，查看结果。</p>
+		</div>
+	</div>
+	<script>
+		function railFenceEncrypt() {
+			const inputText = document.getElementById("inputText").value;
+			const numRails = parseInt(document.getElementById("shift").value);
+
+			if (numRails < 2 || numRails >= Math.floor(inputText.length / 2)) {
+				alert("请输入合法的栅栏数量");
+				return;
+			}
+
+			// 创建一个二维阵列来表示轨道
+			const rails = [];
+			for (let i = 0; i < numRails; i++) {
+				rails.push([]);
+			}
+
+			// 使用输入文本的字符填充轨道阵列
+			let railIndex = 0;
+			let directionDown = true;
+			for (let i = 0; i < inputText.length; i++) {
+				rails[railIndex].push(inputText[i]);
+				if (directionDown) {
+					railIndex++;
+					if (railIndex === numRails - 1) {
+						directionDown = false;
+					}
+				} else {
+					railIndex--;
+					if (railIndex === 0) {
+						directionDown = true;
+					}
+				}
+			}
+
+			// 将轨道连接成一个字符串
+			let result = "";
+			for (let i = 0; i < rails.length; i++) {
+				result += rails[i].join("");
+			}
+			document.getElementById("result").innerHTML = result;
+			document.getElementById("result").style.display = "block";
+		}
+
+		function railFenceDecrypt() {
+			const inputText = document.getElementById("inputText").value;
+			const numRails = parseInt(document.getElementById("shift").value);
+
+			if (numRails < 2 || numRails >= Math.floor(inputText.length / 2)) {
+				alert("请输入合法的栅栏数量");
+				return;
+			}
+
+			// 计算每条轨道的长度
+			const fullBlockLength = numRails * 2 - 2;
+			const shortBlockLength = fullBlockLength - numRails + 2;
+			const numFullBlocks = Math.floor(inputText.length / fullBlockLength);
+			const numShortBlocks = inputText.length % fullBlockLength;
+			const railLengths = [];
+			for (let i = 0; i < numRails; i++) {
+				if (i === 0 || i === numRails - 1) {
+					railLengths.push(numFullBlocks);
+				} else {
+					railLengths.push(numFullBlocks * 2);
+				}
+				if (i < numShortBlocks && i !== numRails - 1) {
+					railLengths[i]++;
+				}
+			}
+
+			// 创建一个二维阵列来表示轨道
+			const rails = [];
+			for (let i = 0; i < numRails; i++) {
+				rails.push([]);
+			}
+
+			// 使用输入文本的字符填充轨道阵列
+			let railIndex = 0;
+			let directionDown = true;
+			let inputIndex = 0;
+			for (let i = 0; i < railLengths.length; i++) {
+				for (let j = 0; j < railLengths[i]; j++) {
+					rails[i].push(inputText[inputIndex]);
+					inputIndex++;
+				}
+			}
+
+			// 将轨道连接成一个字符串
+			let result = "";
+			railIndex = 0;
+			directionDown = true;
+			for (let i = 0; i < inputText.length; i++) {
+				result += rails[railIndex][0];
+				rails[railIndex].splice(0, 1);
+				if (directionDown) {
+					railIndex++;
+					if (railIndex === numRails - 1) {
+						directionDown = false;
+					}
+				} else {
+					railIndex--;
+					if (railIndex === 0) {
+						directionDown = true;
+					}
+				}
+			}
+
+			document.getElementById("result").innerHTML = result;
+			document.getElementById("result").style.display = "block";
+		}
+	</script>
+</body>
+
+</html>
