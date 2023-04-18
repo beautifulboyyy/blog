@@ -114,13 +114,13 @@
 				return;
 			}
 
-			// 创建一个二维阵列来表示轨道
+			// Create a two-dimensional array to represent the rails
 			const rails = [];
 			for (let i = 0; i < numRails; i++) {
 				rails.push([]);
 			}
 
-			// 使用输入文本的字符填充轨道阵列
+			// Fill in the rail array with the characters of the input text
 			let railIndex = 0;
 			let directionDown = true;
 			for (let i = 0; i < inputText.length; i++) {
@@ -138,7 +138,7 @@
 				}
 			}
 
-			// 将轨道连接成一个字符串
+			// Concatenate the rails into a single string
 			let result = "";
 			for (let i = 0; i < rails.length; i++) {
 				result += rails[i].join("");
@@ -156,7 +156,7 @@
 				return;
 			}
 
-			// 计算每条轨道的长度
+			// Calculate the length of each rail
 			const fullBlockLength = numRails * 2 - 2;
 			const shortBlockLength = fullBlockLength - numRails + 2;
 			const numFullBlocks = Math.floor(inputText.length / fullBlockLength);
@@ -173,13 +173,13 @@
 				}
 			}
 
-			// 创建一个二维阵列来表示轨道
+			// Create a two-dimensional array to represent the rails
 			const rails = [];
 			for (let i = 0; i < numRails; i++) {
 				rails.push([]);
 			}
 
-			// 使用输入文本的字符填充轨道阵列
+			// Fill in the rail array with the characters of the input text
 			let railIndex = 0;
 			let directionDown = true;
 			let inputIndex = 0;
@@ -190,7 +190,7 @@
 				}
 			}
 
-			// 将轨道连接成一个字符串
+			// Concatenate the rails into a single string
 			let result = "";
 			railIndex = 0;
 			directionDown = true;

@@ -41,6 +41,7 @@
 			font-size: 18px;
 			cursor: pointer;
 			border: none;
+			margin-right: 10px;
 		}
 
 		.result {
@@ -62,43 +63,41 @@
 			text-align: left;
 		}
 
-        #link {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: white;
-            color: black;
-            padding: 10px 20px;
-            font-size: 18px;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-        }
+		#link {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			background-color: white;
+			color: black;
+			padding: 10px 20px;
+			font-size: 18px;
+			cursor: pointer;
+			border: none;
+			border-radius: 5px;
+			text-decoration: none;
+		}
 	</style>
 </head>
 
-<body>
-    <a href="/" target="_self" id="link">返回</a>
-    
+<body> <a href="/" target="_self" id="link">返回</a>
 	<div class="container">
 		<h1>凯撒密码游戏</h1>
 		<input type="text" id="inputText" placeholder="输入明文或密文">
 		<input type="number" id="shift" placeholder="偏移量">
-		<button onclick="caesarCipher()">加密/解密</button>
+		<div class="button-container">
+			<button onclick="encrypt()">加密</button>
+			<button onclick="decrypt()">解密</button>
+		</div>
 		<div class="result" id="result"></div>
 		<div class="instructions">
 			<p>游戏玩法：</p>
 			<p>1. 输入明文或密文。</p>
-			<p>2. 输入偏移量（正数为加密，负数为解密）。</p>
-			<p>3. 点击加密/解密按钮，查看结果。</p>
+			<p>2. 输入偏移量（整数）。</p>
+			<p>3. 点击按钮进行加解密，查看结果。</p>
 		</div>
 	</div>
 	<script>
-		function caesarCipher() {
-			const inputText = document.getElementById("inputText").value;
-			const shift = parseInt(document.getElementById("shift").value);
-
+		function caesarCipher(inputText, shift) {
 			let result = "";
 
 			for (let i = 0; i < inputText.length; i++) {
@@ -116,6 +115,21 @@
 				result += String.fromCharCode(newCharCode);
 			}
 
+			return result;
+		}
+
+		function encrypt() {
+			const inputText = document.getElementById("inputText").value;
+			const shift = parseInt(document.getElementById("shift").value);
+			const result = caesarCipher(inputText, shift);
+			document.getElementById("result").innerHTML = result;
+			document.getElementById("result").style.display = "block";
+		}
+
+		function decrypt() {
+			const inputText = document.getElementById("inputText").value;
+			const shift = parseInt(document.getElementById("shift").value);
+			const result = caesarCipher(inputText, -shift);
 			document.getElementById("result").innerHTML = result;
 			document.getElementById("result").style.display = "block";
 		}
