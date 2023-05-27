@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Playfair密码游戏</title>
+	<style>
+		body {
+			background-image: url('https://tiangongcrypto.oss-cn-beijing.aliyuncs.com/img/33834f5c1288817772eea8b3b849a075.png');
+			background-size: cover;
+			font-family: Arial, sans-serif;
+		}
+
+		.container {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 100vh;
+			text-align: center;
+		}
+
+		h1 {
+			color: white;
+			font-size: 48px;
+			margin-bottom: 20px;
+		}
+
+		input {
+			padding: 10px;
+			font-size: 18px;
+			width: 300px;
+			margin-bottom: 20px;
+		}
+
+		button {
+			background-color: rgb(0, 191, 255);
+			color: white;
+			padding: 10px 20px;
+			font-size: 18px;
+			cursor: pointer;
+			border: none;
+			margin-right: 10px;
+		}
+
+		.result {
+			display: none;
+			color: white;
+			font-size: 24px;
+			margin-top: 20px;
+			border: 2px solid white;
+			padding: 10px;
+			background-color: rgba(255, 255, 255, 0.2);
+		}
+
+		.instructions {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+			color: white;
+			font-size: 14px;
+			text-align: left;
+		}
+
+		#link {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			background-color: white;
+			color: black;
+			padding: 10px 20px;
+			font-size: 18px;
+			cursor: pointer;
+			border: none;
+			border-radius: 5px;
+			text-decoration: none;
+		}
+	</style>
+</head>
+
+<body>
+	<a href="/" target="_self" id="link">返回</a>
+	<div class="container">
+		<h1>Playfair密码游戏</h1>
+		<input type="text" id="inputText" placeholder="输入明文或密文">
+		<input type="text" id="keyword" placeholder="输入关键词">
+		<div class="button-container">
+			<button onclick="encrypt()">加密</button>
+			<button onclick="decrypt()">解密</button>
+		</div>
+		<div class="result" id="result"></div>
+		<div class="instructions">
+			<p>游戏玩法：</p>
+			<p>1. 输入明文或密文。</p>
+			<p>2. 输入关键词。</p>
+			<p>3. 点击按钮进行加解密，查看结果。</p>
+		</div>
+	</div>
+	<script>
+		function generateGrid(keyword) {
+			// Create an empty 5x5 grid.
+			let grid = Array(5).fill().map(() => Array(5).fill(null));
+
+			// Create a string with all the letters in the alphabet.
+			let alphabet = "ABCDEFGHIKLMNOPQRSTUVWXYZ";  // Note that "J" is omitted.
+
+			// Create a set of the unique characters in the keyword.
+			// Note that we're treating "I" and "J" as interchangeable, so we replace "J" with "I".
+			let uniqueChars = Array.from(new Set(keyword.toUpperCase().replace(/J/g, 'I')));
+
+			// Append the rest of the alphabet to the uniqueChars.
+			for (let i = 0; i < alphabet.length; i++) {
+				if (!uniqueChars.includes(alphabet[i])) {
+					uniqueChars.push(alphabet[i]);
+				}
+			}
+
+			// Fill the grid with the characters.
+			let charIndex = 0;
+			for (let i = 0; i < 5; i++) {
+				for (let j = 0; j < 5; j++) {
+					grid[i][j] = uniqueChars[charIndex];
+					charIndex++;
+				}
+			}
+
+			return grid;
+		}
+
+		function playfairCipher(inputText, keyword, decrypt = false) {
+			const grid = generateGrid(keyword);
+
+			// Convert the input text to uppercase and replace "J" with "I".
+			inputText = inputText.toUpperCase().replace(/J/g, 'I');
+
+			// If the input text length is odd, append an "X" to make it even.
+			if (inputText.length % 2 != 0) {
+				inputText += "X";
+			}
+
+			// Create the cipher text.
+			let cipherText = "";
+			for (let i = 0; i < inputText.length; i += 2) {
+				let char1 = inputText[i];
+				let char2 = inputText[i + 1];
+
+				// Get the positions of the characters in the grid.
+				let pos1 = getPosition(char1, grid);
+				let pos2 = getPosition(char2, grid);
+
+				// Apply the Playfair cipher rules.
+				if (pos1[0] == pos2[0]) {
+					// The characters are in the same row.
+					let newCol1 = decrypt ? ((pos1[1] - 1 + 5) % 5) : ((pos1[1] + 1) % 5);
+					let newCol2 = decrypt ? ((pos2[1] - 1 + 5) % 5) : ((pos2[1] + 1) % 5);
+					cipherText += grid[pos1[0]][newCol1];
+					cipherText += grid[pos2[0]][newCol2];
+				} else if (pos1[1] == pos2[1]) {
+					// The characters are in the same column.
+					let newRow1 = decrypt ? ((pos1[0] - 1 + 5) % 5) : ((pos1[0] + 1) % 5);
+					let newRow2 = decrypt ? ((pos2[0] - 1 + 5) % 5) : ((pos2[0] + 1) % 5);
+					cipherText += grid[newRow1][pos1[1]];
+					cipherText += grid[newRow2][pos2[1]];
+				} else {
+					// The characters form a rectangle.
+					cipherText += grid[pos1[0]][pos2[1]];
+					cipherText += grid[pos2[0]][pos1[1]];
+				}
+			}
+
+			return cipherText;
+		}
+
+		function getPosition(character, grid) {
+			for (let i = 0; i < 5; i++) {
+				for (let j = 0; j < 5; j++) {
+					if (grid[i][j] == character) {
+						return [i, j];
+					}
+				}
+			}
+		}
+
+		function encrypt() {
+			const inputText = document.getElementById("inputText").value;
+			const keyword = document.getElementById("keyword").value;
+			const result = playfairCipher(inputText, keyword);
+			document.getElementById("result").innerHTML = result;
+			document.getElementById("result").style.display = "block";
+		}
+
+		function decrypt() {
+			const inputText = document.getElementById("inputText").value;
+			const keyword = document.getElementById("keyword").value;
+			const result = playfairCipher(inputText, keyword, true);
+			document.getElementById("result").innerHTML = result;
+			document.getElementById("result").style.display = "block";
+		}
+	</script>
+</body>
+
+
+
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>维吉尼亚密码游戏</title>
+  <style>
+      body {
+      background-image: url('https://tiangongcrypto.oss-cn-beijing.aliyuncs.com/img/33834f5c1288817772eea8b3b849a075.png');
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      color: white;
+      font-size: 48px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 10px;
+      font-size: 18px;
+      width: 300px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: rgb(0, 191, 255);
+      color: white;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      margin-right: 10px;
+    }
+
+    .result {
+      display: none;
+      color: white;
+      font-size: 24px;
+      margin-top: 20px;
+      border: 2px solid white;
+      padding: 10px;
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .instructions {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 14px;
+      text-align: left;
+    }
+
+    #link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: white;
+      color: black;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <a href="/" target="_self" id="link">返回</a>
+  <div class="container">
+    <h1>维吉尼亚密码游戏</h1>
+    <input type="text" id="inputText" placeholder="输入明文或密文">
+    <input type="text" id="keyword" placeholder="输入关键字">
+    <div class="button-container">
+      <button onclick="encrypt()">加密</button>
+      <button onclick="decrypt()">解密</button>
+    </div>
+    <div class="result" id="result"></div>
+    <div class="instructions">
+      <p>游戏玩法：</p>
+      <p>1. 输入明文或密文。</p>
+      <p>2. 输入关键字。</p>
+      <p>3. 点击按钮进行加解密，查看结果。</p>
+    </div>
+  </div>
+  <script>
+    function vigenereCipher(inputText, keyword, encrypt) {
+      let result = "";
+      const keywordLength = keyword.length;
+
+      for (let i = 0; i < inputText.length; i++) {
+        const charCode = inputText.charCodeAt(i);
+        let newCharCode;
+        const shift = keyword.charCodeAt(i % keywordLength) - (charCode >= 65 && charCode <= 90 ? 65 : 97);
+
+        if (charCode >= 65 && charCode <= 90) {
+          newCharCode = encrypt ? ((charCode - 65 + shift) % 26) + 65 : ((charCode - 65 - shift + 26) % 26) + 65;
+        } else if (charCode >= 97 && charCode <= 122) {
+          newCharCode = encrypt ? ((charCode - 97 + shift) % 26) + 97 : ((charCode - 97 - shift + 26) % 26) + 97;
+        } else {
+          newCharCode = charCode;
+        }
+
+        result += String.fromCharCode(newCharCode);
+      }
+
+      return result;
+    }
+
+    function encrypt() {
+      const inputText = document.getElementById("inputText").value;
+      const keyword = document.getElementById("keyword").value;
+      const result = vigenereCipher(inputText, keyword, true);
+      document.getElementById("result").innerHTML = result;
+      document.getElementById("result").style.display = "block";
+    }
+
+    function decrypt() {
+      const inputText = document.getElementById("inputText").value;
+      const keyword = document.getElementById("keyword").value;
+      const result = vigenereCipher(inputText, keyword, false);
+      document.getElementById("result").innerHTML = result;
+      document.getElementById("result").style.display = "block";
+    }
+  </script>
+</body>
+
+</html>
